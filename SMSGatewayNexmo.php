@@ -49,12 +49,12 @@ class SMSGatewayNexmo implements SMSGateway
 
     protected function buildRequest($sender, $receiver, $message)
     {
-        $request = $this->settings['url'].'api_key=';
-        $request.= $this->settings['key'].'&api_secret=';
-        $request.= $this->settings['secret'].'&from=';
-        $request.= $sender.'&to=';
-        $request.= $receiver.'&text=';
-        $request.= urlencode($message);
+        $request = $this->settings['url'];
+        $request.= 'api_key='.$this->settings['key'];
+        $request.= '&api_secret='.$this->settings['secret'];
+        $request.= '&from='.$sender;
+        $request.= '&to='.$receiver;
+        $request.= '&text='.urlencode($message);
 
         return $request;
     }
