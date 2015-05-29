@@ -25,7 +25,7 @@ class SMSGatewayNexmo implements SMSGateway
             13 => 'Communication Failed: Message was not submitted because there was a communication failure',
             14 => 'Invalid Signature: Message was not submitted due to a verification failure in the submitted signature',
             15 => 'Invalid sender address: The sender address (from parameter) was not allowed for this message. Restrictions may apply depending on the destination see our FAQs',
-            16 => 'Invalid TTL The ttl parameter values is invalid',
+            16 => 'Invalid TTL: The ttl parameter values is invalid',
             19 => 'Facility not allowed: Your request makes use of a facility that is not enabled on your account',
             20 => 'Invalid Message class: The message class value supplied was out of range (0 - 3)',
             999 => 'Debugging',
