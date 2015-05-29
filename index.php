@@ -8,6 +8,6 @@ require_once('SMSGatewayNexmo.php');
 $SMS = new \SMS\SMS('nexmo');
 $SMS->setSender('Insert sender number or id here.')
     ->setReceiver('Insert receiver number here.')
-    ->setMessage('Insert your test message here.');
-$SMS->send();
+    ->setMessage('Insert your test message here.')
+    ->send();
 $reponse = $SMS->getResponse();
