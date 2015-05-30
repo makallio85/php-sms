@@ -19,7 +19,7 @@ class SMS
     {
         switch($gateway) {
             case 'nexmo':
-                $this->Gateway = new \SMS\SMSGatewayNexmo();
+                $this->Gateway = new SMS\Nexmo();
                 break;
         }
 

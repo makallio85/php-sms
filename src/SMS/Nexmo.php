@@ -2,10 +2,12 @@
 
 namespace SMS;
 
-class SMSGatewayNexmo implements SMSGateway
+require_once('config/Config.php');
+
+class Nexmo implements GatewayInterface
 {
     protected $response;
-    protected $settings = [
+    protected $config = [
         'key' => '',
         'secret' => '',
         'url' => 'https://rest.nexmo.com/sms/json?',
@@ -34,9 +36,9 @@ class SMSGatewayNexmo implements SMSGateway
 
     public function __construct()
     {
-        $settings = \SMS\Settings::get();
-        $this->settings['key'] = $settings['key'];
-        $this->settings['secret'] = $settings['secret'];
+        $config = \SMS\Config::get();
+        $this->setConfig('key', $config['nexmo']['key']);
+        $this->setConfig('secret', $config['nexmo']['secret']);
     }
 
     public function isOnline()
@@ -47,16 +49,26 @@ class SMSGatewayNexmo implements SMSGateway
         return !empty($data['message-count']);
     }
 
-    protected function buildRequest($sender, $receiver, $message)
+    protected function buildRequest(SMS $SMS)
     {
-        $request = $this->settings['url'];
-        $request.= 'api_key='.$this->settings['key'];
-        $request.= '&api_secret='.$this->settings['secret'];
-        $request.= '&from='.$sender;
-        $request.= '&to='.$receiver;
-        $request.= '&text='.urlencode($message);
+        $request = $this->getConfig('url');
+        $request.= 'api_key='.$this->getConfig('key');
+        $request.= '&api_secret='.$this->getConfig('secret');
+        $request.= '&from='.$SMS->getSender();
+        $request.= '&to='.$SMS->getReceiver();
+        $request.= '&text='.urlencode($SMS->getMessage());
 
         return $request;
+    }
+
+    protected function setConfig($key, $value)
+    {
+        $this->config[$key] = $value;
+    }
+
+    protected function getConfig($key)
+    {
+        return $this->config[$key];
     }
 
     public function debugSend()
@@ -68,7 +80,7 @@ class SMSGatewayNexmo implements SMSGateway
                     'to' => 'sender number here',
                     'message-id' => 'message id here',
                     'status' => '999',
-                    'status-explanation' => $this->settings['statusCodes'][999],
+                    'status-explanation' => $this->config['statusCodes'][999],
                     'remaining-balance' => 'remaining balance here',
                     'message-price' => 'message price here',
                     'network' => 'network here',
@@ -79,9 +91,9 @@ class SMSGatewayNexmo implements SMSGateway
         return true;
     }
 
-    public function send(\SMS\SMS $SMS)
+    public function send(SMS\SMS $SMS)
     {
-        $request = $this->buildRequest($SMS->getSender(), $SMS->getReceiver(), $SMS->getMessage());
+        $request = $this->buildRequest($SMS);
         $this->response = json_decode(file_get_contents($request), true);
 
         return true;
