@@ -5,7 +5,7 @@ namespace SMS;
 /**
  * SMS class
  *
- * This class has all needed methods to send SMS messages.
+ * Main class to use, when sending messages
  */
 class SMS 
 {
@@ -52,12 +52,12 @@ class SMS
      */
     public function setGateway($gateway)
     {
-        if (!class_exists($gateway)) {
-            //throw new \SMS\Exception("Gateway $gateway does not exist!"); // W000t??? 
-        } 
         switch($gateway) {
             case 'Nexmo':
                 $this->Gateway = new \SMS\Nexmo();
+                break;
+            default:
+                throw new \Exception("Gateway $gateway does not exist!");
                 break;
         }
 

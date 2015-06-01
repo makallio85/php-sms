@@ -14,5 +14,5 @@ $SMS->setSender('Insert sender number or id here.')
     ->setReceiver('Insert receiver number here.')
     ->setMessage('Insert your test message here.')
     ->send();
-$reponse = $SMS->getResponse();
+$response = $SMS->getResponse();
 ```
