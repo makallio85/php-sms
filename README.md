@@ -2,11 +2,11 @@
 
 PHP SMS class to send sms messages via gateway. Currently supports Nexmo only.
 
-### Todo:
- - Testing
- - Improve exeption handling
-
 ### Usage:
+
+- Set your credentials to config/Config.php
+- Set debug mode to false, when ready
+- Use code below
 
 ```php
 $SMS = new \SMS\SMS('nexmo');
