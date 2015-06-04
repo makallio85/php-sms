@@ -2,15 +2,15 @@
 
 namespace SMS;
 
-require_once('config/Config.php');
+require_once 'config/Config.php';
 
 /**
- * Nexmo gateway class
+ * Nexmo gateway class.
  */
 class Nexmo extends BaseGateway implements GatewayInterface
 {
     /**
-     * Class constructor
+     * Class constructor.
      */
     public function __construct()
     {
@@ -20,8 +20,8 @@ class Nexmo extends BaseGateway implements GatewayInterface
     }
 
     /**
-     * Method to check, if service is online
-     * 
+     * Method to check, if service is online.
+     *
      * @return bool
      */
     public function isOnline()
@@ -33,8 +33,8 @@ class Nexmo extends BaseGateway implements GatewayInterface
     }
 
     /**
-     * Validate sender, receiver and message
-     * 
+     * Validate sender, receiver and message.
+     *
      * @param \SMS\SMS $SMS
      */
     public function validate(\SMS\SMS $SMS)
@@ -43,47 +43,49 @@ class Nexmo extends BaseGateway implements GatewayInterface
         $msgSize = strlen($SMS->getMessage());
         if ($msgSize > $maxSize) {
             $this->Response->Validator->setError([
-                'message' => "Message size - $msgSize chars - exceeds the limit of $maxSize characters!"
+                'message' => "Message size - $msgSize chars - exceeds the limit of $maxSize characters!",
             ]);
         }
 
         $sender = $SMS->getSender();
         if (!$this->Response->Validator->validatePhone($sender)) {
             $this->Response->Validator->setError([
-                'message' => "Sender phone number '$sender' is not valid!"
+                'message' => "Sender phone number '$sender' is not valid!",
             ]);
         }
 
         $receiver = $SMS->getReceiver();
         if (!$this->Response->Validator->validatePhone($receiver)) {
             $this->Response->Validator->setError([
-                'message' => "Receiver phone number '$receiver' is not valid!"
+                'message' => "Receiver phone number '$receiver' is not valid!",
             ]);
         }
     }
 
     /**
-     * Build request string
-     * 
+     * Build request string.
+     *
      * @param \SMS\SMS $SMS
+     *
      * @return string
      */
     public function buildRequest(\SMS\SMS $SMS)
     {
         $request = $this->getConfig('url');
-        $request.= 'api_key='.$this->getConfig('key');
-        $request.= '&api_secret='.$this->getConfig('secret');
-        $request.= '&from='.$SMS->getSender();
-        $request.= '&to='.$SMS->getReceiver();
-        $request.= '&text='.urlencode($SMS->getMessage());
+        $request .= 'api_key='.$this->getConfig('key');
+        $request .= '&api_secret='.$this->getConfig('secret');
+        $request .= '&from='.$SMS->getSender();
+        $request .= '&to='.$SMS->getReceiver();
+        $request .= '&text='.urlencode($SMS->getMessage());
 
         return $request;
     }
 
     /**
-     * Send sms
-     * 
+     * Send sms.
+     *
      * @param \SMS\SMS $SMS
+     *
      * @return bool
      */
     public function send(\SMS\SMS $SMS)
@@ -103,8 +105,8 @@ class Nexmo extends BaseGateway implements GatewayInterface
                         'remaining-balance' => 'remaining balance here',
                         'message-price' => 'message price here',
                         'network' => 'network here',
-                    ]
-                ]
+                    ],
+                ],
             ]);
         } else {
             $request = $this->buildRequest($SMS);

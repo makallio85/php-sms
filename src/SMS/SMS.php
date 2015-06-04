@@ -3,39 +3,43 @@
 namespace SMS;
 
 /**
- * SMS class
+ * SMS class.
  *
  * Main class to use, when sending messages
  */
-class SMS 
+class SMS
 {
     /**
-     * Sender phone number
+     * Sender phone number.
+     *
      * @var string
      */
     protected $sender = '';
 
     /**
-     * Receiver phone number
+     * Receiver phone number.
+     *
      * @var string
      */
     protected $receiver = '';
 
     /**
-     * Message contents
+     * Message contents.
+     *
      * @var string
      */
     protected $message = '';
 
     /**
-     * Currently used Gateway object
+     * Currently used Gateway object.
+     *
      * @var object
      */
     protected $Gateway;
 
     /**
-     * Class constructor
-     * 
+     * Class constructor.
+     *
      * @param string $gateway Desired gateway to use
      */
     public function __construct($gateway)
@@ -44,15 +48,17 @@ class SMS
     }
 
     /**
-     * Set gateway to use
-     * 
+     * Set gateway to use.
+     *
      * @param string $gateway Gateway name
+     *
      * @throws Exception
+     *
      * @return object SMS
      */
     public function setGateway($gateway)
     {
-        switch($gateway) {
+        switch ($gateway) {
             case 'Nexmo':
                 $this->Gateway = new \SMS\Nexmo();
                 break;
@@ -65,9 +71,10 @@ class SMS
     }
 
     /**
-     * Set sender
-     * 
+     * Set sender.
+     *
      * @param string $sender Sender phone number
+     *
      * @return object SMS
      */
     public function setSender($sender)
@@ -78,9 +85,10 @@ class SMS
     }
 
     /**
-     * Set message
-     * 
+     * Set message.
+     *
      * @param string $message Message to send
+     *
      * @return object SMS
      */
     public function setMessage($message)
@@ -91,9 +99,10 @@ class SMS
     }
 
     /**
-     * Set receiver
-     * 
+     * Set receiver.
+     *
      * @param string $receiver Receiver phone number
+     *
      * @return object SMS
      */
     public function setReceiver($receiver)
@@ -104,8 +113,8 @@ class SMS
     }
 
     /**
-     * Get sender
-     * 
+     * Get sender.
+     *
      * @return string
      */
     public function getSender()
@@ -114,8 +123,8 @@ class SMS
     }
 
     /**
-     * Get Message
-     * 
+     * Get Message.
+     *
      * @return string
      */
     public function getMessage()
@@ -124,8 +133,8 @@ class SMS
     }
 
     /**
-     * Get receiver
-     * 
+     * Get receiver.
+     *
      * @return string
      */
     public function getReceiver()
@@ -134,8 +143,8 @@ class SMS
     }
 
     /**
-     * Get response
-     * 
+     * Get response.
+     *
      * @return array Response data
      */
     public function getResponse()
@@ -144,8 +153,18 @@ class SMS
     }
 
     /**
-     * Perform actual sending
-     * 
+     * Get errors.
+     *
+     * @return array Errors
+     */
+    public function getErrors()
+    {
+        return $this->Gateway->Response->Validator->getErrors();
+    }
+
+    /**
+     * Perform actual sending.
+     *
      * @return bool
      */
     public function send()
