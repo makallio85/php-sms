@@ -40,7 +40,7 @@ class Nexmo extends BaseGateway implements GatewayInterface
     public function validate(\SMS\SMS $SMS)
     {
         $maxSize = $this->getConfig('maxMessageSize');
-        $msgSize = strlen($SMS->getMessage());
+        $msgSize = iconv_strlen($SMS->getMessage());
         if ($msgSize > $maxSize) {
             $this->Response->Validator->setError([
                 'message' => "Message size - $msgSize chars - exceeds the limit of $maxSize characters!",
