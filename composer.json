@@ -1,17 +1,11 @@
 {
-  "name": "php-sms",
+  "name": "makallio85/php-sms",
   "type": "library",
   "description": "PHP library to send SMS messages via different gateways",
   "keywords": [
     "sms"
   ],
   "license": "MIT",
-  "authors": [
-    {
-      "name": "Marko Kallio",
-      "email": "marko.kallio@suomenpt.fi"
-    }
-  ],
   "require": {
     "php": ">=5.4.0"
   },
