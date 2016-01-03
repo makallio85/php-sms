@@ -1,5 +1,6 @@
 php-sms
 -------
+[![Latest Stable Version](https://poser.pugx.org/makallio85/php-sms/v/stable)](https://packagist.org/packages/makallio85/php-sms) [![Total Downloads](https://poser.pugx.org/makallio85/php-sms/downloads)](https://packagist.org/packages/makallio85/php-sms) [![Latest Unstable Version](https://poser.pugx.org/makallio85/php-sms/v/unstable)](https://packagist.org/packages/makallio85/php-sms) [![License](https://poser.pugx.org/makallio85/php-sms/license)](https://packagist.org/packages/makallio85/php-sms) [![Build Status](https://travis-ci.org/makallio85/php-sms.svg?branch=master)](https://travis-ci.org/makallio85/php-sms)
 
 PHP SMS class to send sms messages via gateway. Currently supports Nexmo only.
 
