@@ -6,12 +6,6 @@
     "sms"
   ],
   "license": "MIT",
-  "authors": [
-    {
-      "name": "Marko Kallio",
-      "email": "marko.kallio@suomenpt.fi"
-    }
-  ],
   "require": {
     "php": ">=5.4.0"
   },
