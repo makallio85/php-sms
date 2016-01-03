@@ -1,5 +1,5 @@
 {
-  "name": "php-sms",
+  "name": "makallio85/php-sms",
   "type": "library",
   "description": "PHP library to send SMS messages via different gateways",
   "keywords": [
