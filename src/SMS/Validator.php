@@ -9,15 +9,16 @@ class Validator
 {
     /**
      * Property that holds array of errors
-     * 
+     *
      * @var array
      */
     public $errors = [];
 
     /**
      * Set new error
-     * 
+     *
      * @param array $data Arror data
+     *
      * @return object Validator
      */
     public function setError(Array $data)
@@ -29,7 +30,7 @@ class Validator
 
     /**
      * Get errors
-     * 
+     *
      * @return array Errors
      */
     public function getErrors()
@@ -39,8 +40,9 @@ class Validator
 
     /**
      * Validate phone number
-     * 
+     *
      * @param string $phoneNumber Phone number to validate
+     *
      * @return bool
      */
     public function validatePhone($phoneNumber)

@@ -9,12 +9,14 @@ class BaseGateway
 {
     /**
      * Gateway configuration property
+     *
      * @var array
      */
     protected $config = [];
-    
+
     /**
      * Reponse object
+     *
      * @var object
      */
     public $Response;
@@ -29,8 +31,9 @@ class BaseGateway
 
     /**
      * Set config data
-     * 
+     *
      * @param array $configData
+     *
      * @return object BaseGateway
      */
     public function setConfig($configData)
@@ -42,8 +45,9 @@ class BaseGateway
 
     /**
      * Get config value by key
-     * 
+     *
      * @param string $key Config value to get
+     *
      * @return string
      */
     public function getConfig($key)

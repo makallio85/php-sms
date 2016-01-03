@@ -9,12 +9,14 @@ class Response
 {
     /**
      * Validator
+     *
      * @var object
      */
     public $Validator = [];
 
     /**
      * Reponse data property
+     *
      * @var array
      */
     public $data;
@@ -29,7 +31,7 @@ class Response
 
     /**
      * Get errors
-     * 
+     *
      * @return array
      */
     public function getErrors()
@@ -39,7 +41,7 @@ class Response
 
     /**
      * Get response data
-     * 
+     *
      * @return array
      */
     public function getData()
@@ -49,8 +51,9 @@ class Response
 
     /**
      * Set response data
-     * 
+     *
      * @param array $data
+     *
      * @return object Response
      */
     public function setData($data)

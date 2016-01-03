@@ -5,7 +5,7 @@ namespace SMS;
 /**
  * Gateway interface class. Every Gateway class must implement this
  */
-interface GatewayInterface 
+interface GatewayInterface
 {
     /**
      * Send
@@ -16,7 +16,7 @@ interface GatewayInterface
      * Validate
      */
     public function validate(\SMS\SMS $SMS);
-    
+
     /**
      * Is online?
      */
