@@ -4,6 +4,10 @@ php-sms
 
 PHP SMS class to send sms messages via gateway. Currently supports Nexmo only.
 
+### Installation ###
+
+```composer require makallio85/php-sms "dev-master"```
+
 ### Usage ###
 
 - Set your credentials to config/Config.php
