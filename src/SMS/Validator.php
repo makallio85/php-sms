@@ -3,7 +3,11 @@
 namespace SMS;
 
 /**
- * Validation class to validate data before sending
+ * Class Validator
+ *
+ * Validate data before sending
+ *
+ * @package SMS
  */
 class Validator
 {
@@ -17,9 +21,9 @@ class Validator
     /**
      * Set new error
      *
-     * @param array $data Arror data
+     * @param array $data Error data
      *
-     * @return object Validator
+     * @return $this
      */
     public function setError(Array $data)
     {
@@ -47,6 +51,6 @@ class Validator
      */
     public function validatePhone($phoneNumber)
     {
-        return true;
+        return $phoneNumber !== null;
     }
 }

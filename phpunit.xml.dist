@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<phpunit 
-    colors="true" 
-    bootstrap="vendor/autoload.php"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
->
-  <testsuites>
-    <testsuite name="php-sms testsuite">
-      <directory>./tests</directory>
-    </testsuite>
-  </testsuites>
+<phpunit colors="true" bootstrap="vendor/autoload.php" convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true" convertWarningsToExceptions="true">
+    <testsuites>
+        <testsuite name="php-sms testsuite">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
     </logging>

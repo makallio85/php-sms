@@ -15,7 +15,7 @@ class BaseGateway
     protected $config = [];
 
     /**
-     * Reponse object
+     * Response object
      *
      * @var object
      */

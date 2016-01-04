@@ -4,7 +4,7 @@ use \SMS\SMS;
 use \SMS\Nexmo;
 
 /**
- * Test class for Nexmo gateway class
+ * Class NexmoTest
  */
 class NexmoTest extends PHPUnit_Framework_TestCase
 {

@@ -3,9 +3,11 @@
 namespace SMS;
 
 /**
- * SMS class.
+ * Class SMS
  *
  * Main class to use, when sending messages
+ *
+ * @package SMS
  */
 class SMS
 {
@@ -33,7 +35,7 @@ class SMS
     /**
      * Currently used Gateway object.
      *
-     * @var object
+     * @var BaseGateway $Gateway
      */
     protected $Gateway;
 
@@ -52,15 +54,15 @@ class SMS
      *
      * @param string $gateway Gateway name
      *
-     * @throws Exception
+     * @throws \Exception
      *
-     * @return object SMS
+     * @return $this
      */
     public function setGateway($gateway)
     {
         switch ($gateway) {
             case 'Nexmo':
-                $this->Gateway = new \SMS\Nexmo();
+                $this->Gateway = new Nexmo();
                 break;
             default:
                 throw new \Exception("Gateway $gateway does not exist!");
@@ -75,7 +77,7 @@ class SMS
      *
      * @param string $sender Sender phone number
      *
-     * @return object SMS
+     * @return $this
      */
     public function setSender($sender)
     {
@@ -89,7 +91,7 @@ class SMS
      *
      * @param string $message Message to send
      *
-     * @return object SMS
+     * @return $this
      */
     public function setMessage($message)
     {
@@ -103,7 +105,7 @@ class SMS
      *
      * @param string $receiver Receiver phone number
      *
-     * @return object SMS
+     * @return $this
      */
     public function setReceiver($receiver)
     {
@@ -166,10 +168,14 @@ class SMS
      * Perform actual sending.
      *
      * @return bool
+     * @noinspection
      */
     public function send()
     {
+        /** @noinspection PhpUndefinedMethodInspection */
         $this->Gateway->validate($this);
+
+        /** @noinspection PhpUndefinedMethodInspection */
 
         return $this->Gateway->send($this);
     }

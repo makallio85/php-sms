@@ -3,7 +3,9 @@
 namespace SMS;
 
 /**
- * Response class
+ * Class Response
+ *
+ * @package SMS
  */
 class Response
 {
@@ -15,7 +17,7 @@ class Response
     public $Validator = [];
 
     /**
-     * Reponse data property
+     * Response data property
      *
      * @var array
      */
@@ -54,7 +56,7 @@ class Response
      *
      * @param array $data
      *
-     * @return object Response
+     * @return $this
      */
     public function setData($data)
     {

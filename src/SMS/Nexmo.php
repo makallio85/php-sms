@@ -2,10 +2,12 @@
 
 namespace SMS;
 
-require_once 'config/Config.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/config/Config.php';
 
 /**
- * Nexmo gateway class.
+ * Class Nexmo
+ *
+ * @package SMS
  */
 class Nexmo extends BaseGateway implements GatewayInterface
 {
@@ -14,7 +16,7 @@ class Nexmo extends BaseGateway implements GatewayInterface
      */
     public function __construct()
     {
-        $configData = \SMS\Config::get('Nexmo');
+        $configData = Config::get('Nexmo');
         $this->setConfig($configData);
         parent::__construct();
     }
@@ -36,8 +38,10 @@ class Nexmo extends BaseGateway implements GatewayInterface
      * Validate sender, receiver and message.
      *
      * @param \SMS\SMS $SMS
+     *
+     * @return void
      */
-    public function validate(\SMS\SMS $SMS)
+    public function validate(SMS $SMS)
     {
         $maxSize = $this->getConfig('maxMessageSize');
         $msgSize = iconv_strlen($SMS->getMessage());
@@ -71,11 +75,11 @@ class Nexmo extends BaseGateway implements GatewayInterface
     /**
      * Build request string.
      *
-     * @param \SMS\SMS $SMS
+     * @param SMS $SMS
      *
      * @return string
      */
-    public function buildRequest(\SMS\SMS $SMS)
+    public function buildRequest(SMS $SMS)
     {
         $request = $this->getConfig('url');
         $request .= 'api_key=' . $this->getConfig('key');
@@ -90,11 +94,11 @@ class Nexmo extends BaseGateway implements GatewayInterface
     /**
      * Send sms.
      *
-     * @param \SMS\SMS $SMS
+     * @param SMS $SMS
      *
      * @return bool
      */
-    public function send(\SMS\SMS $SMS)
+    public function send(SMS $SMS)
     {
         if (count($this->Response->Validator->getErrors()) > 0) {
             return false;
